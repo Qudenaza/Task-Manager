@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&amp;subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Task Manager</title>
+</head>
+<body>
+  <h1 class="title">Май</h1>
+  <div class="calendar">
+    <div class="calendar__day">
+      <div class="calendar__side calendar__side--front">
+        <span class="calendar__date">1</span>
+        <ul class="calendar__task"></ul>
+      </div>  
+      <div class="calendar__side calendar__side--back">
+        <button class="btn calendar__btn">Добавить событие</button>
+      </div>
+    </div>
+    <div class="calendar__day">
+      <div class="calendar__side calendar__side--front">
+        <span class="calendar__date">2</span>
+        <ul class="calendar__task">
+          <li class="calendar__item">Выгулять собаку</li>
+        </ul>
+      </div>  
+      <div class="calendar__side calendar__side--back">
+        <button class="btn calendar__btn">Добавить событие</button>
+      </div>
+    </div>
+    <div class="calendar__day">
+      <div class="calendar__side calendar__side--front">
+        <span class="calendar__date">3</span>
+      </div>  
+      <div class="calendar__side calendar__side--back">
+        <button class="btn calendar__btn">Добавить событие</button>
+      </div>
+    </div>
+    <div class="calendar__day">
+      <div class="calendar__side calendar__side--front">
+        <span class="calendar__date">4</span>
+      </div>  
+      <div class="calendar__side calendar__side--back">
+        <button class="btn calendar__btn">Добавить событие</button>
+      </div>
+    </div>
+    <div class="calendar__day">
+      <div class="calendar__side calendar__side--front">
+        <span class="calendar__date">5</span>
+      </div>  
+      <div class="calendar__side calendar__side--back">
+        <button class="btn calendar__btn">Добавить событие</button>
+      </div>
+    </div>
+    <div class="calendar__day">6</div>
+    <div class="calendar__day">7</div>
+    <div class="calendar__day">8</div>
+    <div class="calendar__day">
+      <div class="calendar__side calendar__side--front">
+        <span class="calendar__date">9</span>
+      </div>  
+      <div class="calendar__side calendar__side--back">
+        <button class="btn calendar__btn">Добавить событие</button>
+      </div>
+    </div>
+    <div class="calendar__day">10</div>
+    <div class="calendar__day">11</div>
+    <div class="calendar__day">12</div>
+    <div class="calendar__day">13</div>
+    <div class="calendar__day">14</div>
+    <div class="calendar__day">15</div>
+    <div class="calendar__day">16</div>
+    <div class="calendar__day">17</div>
+    <div class="calendar__day">18</div>
+    <div class="calendar__day">19</div>
+    <div class="calendar__day">20</div>
+    <div class="calendar__day">21</div>
+    <div class="calendar__day">22</div>
+    <div class="calendar__day">23</div>
+    <div class="calendar__day">24</div>
+    <div class="calendar__day">25</div>
+    <div class="calendar__day">26</div>
+    <div class="calendar__day">27</div>
+    <div class="calendar__day">28</div>
+    <div class="calendar__day">29</div>
+    <div class="calendar__day">30</div>
+    <div class="calendar__day">31</div>
+  </div>
+  <div class="modal">
+    <button class="close__btn">X</button>
+    <form action="#" class="form">
+      <h2 class="form__title">Добавление события</h2>
+      <fieldset class="form__group">
+        <input type="text" name="text" class="form__task" required id="inputTask" placeholder="Добавьте событие">
+        <label for="inputTask" class="form__label">Добавьте событие</label>
+      </fieldset>
+      <button class="btn modal__btn">Добавить</button>
+    </form>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

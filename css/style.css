@@ -1,0 +1,225 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  background: url('../background-may.jpg');
+  background-size: cover;
+}
+
+.title {
+  margin-top: 2rem;
+  color: #f1f1f1;
+  text-align: center;
+  font-size: 4rem;
+  font-family: 'Amatic SC', cursive, sans-serif;
+}
+
+.calendar {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 2rem 0 2rem 4rem;
+}
+
+.calendar__day { 
+  position: relative;
+  -webkit-perspective: 150rem;
+  perspective: 150rem;
+  margin-bottom: 1rem;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 3px;
+}
+
+.calendar__day:hover {
+  cursor: pointer;
+}
+
+.calendar__day:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.calendar__side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 3px;
+  transition: all 1s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.calendar__side--front {
+  padding: 1rem;
+  background: #a9a9a9;
+}
+
+.calendar__date {
+  display: block;
+  text-align: center;
+  font-family: 'Amatic SC', cursive, sans-serif;
+  font-size: 1.7rem;
+  border: 1px solid #fff;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+.calendar__side--back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotateY(180deg);
+  background: url('../pen.svg'),url('../hand-writing.svg'),url('../drawing-line.svg'), #a9a9a9;
+  background-size: 30%,30%,30% ,cover;
+  background-repeat: no-repeat;
+  background-position: 50% 90%, 0% 6%, 100% 5% , center;
+}
+
+.calendar__day:hover .calendar__side--front {
+  transform: rotateY(-180deg);
+}
+
+.calendar__day:hover .calendar__side--back {
+  transform: rotateY(0);
+}
+
+.active {
+  background-color: #00FF7F;
+}
+
+.calendar__btn{
+  margin-top: 5.5rem;
+}
+
+.btn {
+  padding: .5rem 1.5rem .7rem 1.5rem;
+  border: none;
+  border-radius: 100rem;
+  font-family: 'Amatic SC', cursive, sans-serif;
+  font-size: 1.7rem;
+  transition: all .2s;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background: #696969;
+  color: #fff;
+  transition: all .2s;
+}
+
+.btn:active {
+  background: #808080;
+  outline: none;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+
+
+
+
+
+.modal {
+  display: none;
+  position: absolute;
+  width: 150rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  max-width: 50rem;
+  border-radius: 3px;
+  background: lightgrey; 
+  box-shadow: 0 2rem 4rem rgba(0,0,0,0.5);
+}
+
+.form__title {
+  display: block;
+  margin: 2rem 0;
+  text-align: center;
+  font-size: 3rem;
+  font-family: 'Amatic SC', cursive, sans-serif;
+}
+
+.form__group {
+  border: none;
+}
+
+.form__task {
+  display: block;
+  width: 100%;
+  font-size: 1.5rem;
+  font-family: 'Times', sans-serif;
+  padding: 1.5rem 2rem;
+  border-radius: 3px;
+  border: none;
+  border-bottom: 3px solid #fff;
+  transition: all .3s;
+  outline: none;
+}
+
+.form__task:focus:invalid {
+  border-bottom: 3px solid #ff7730;
+}
+
+.form__task:focus {
+  outline: none;
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+  border-bottom: 3px solid #55c57a;
+}
+
+.form__label {
+  display: block;
+  margin: .7rem 0 0 2rem;
+  font-family: 'Amatic SC', cursive, sans-serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  transition: all .3s;
+}
+
+.form__task:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate(10rem);
+  transform: translate(10rem);
+}
+
+
+.modal__btn {
+  margin-top: 3rem;
+  padding: 1rem 5rem;
+  font-size: 2rem;
+  box-shadow: 0 1rem 1rem rgba(0,0,0,0.1);
+}
+
+.close__btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.calendar__task {
+  padding: 1rem;
+  list-style: none;
+}
+
+.calendar__item {
+  font-size: 1.8rem;
+  font-family: 'Amatic SC', cursive, sans-serif;
+}
