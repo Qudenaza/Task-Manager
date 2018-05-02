@@ -10,51 +10,60 @@ html {
   font-size: 62.5%;
 }
 
+
+:root {
+  --font-primary: 'Amatic SC', cursive, sans-serif;
+  --font-secondary: 'Lobster', cursive, sans-serif;
+
+  --color-primary: #777;
+}
+
 body {
   box-sizing: border-box;
-  background: url('../background-may.jpg');
+  background: linear-gradient(to right bottom, rgba(126,213,111,0.8), rgba(40,180,133,0.8)), url("../background-2.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
+  font-family: var(--font-primary);
+  color: var(--color-primary);
 }
 
 .title {
   margin-top: 2rem;
-  color: #f1f1f1;
   text-align: center;
   font-size: 4rem;
-  font-family: 'Amatic SC', cursive, sans-serif;
 }
 
 .calendar {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: wrap;
   padding: 2rem 0 2rem 4rem;
 }
 
 .calendar__day { 
   position: relative;
+  margin: 0 2rem 2rem 0;
+  min-width: 20rem;
+  height: 20rem;
+  flex-grow: 1;
   -webkit-perspective: 150rem;
   perspective: 150rem;
-  margin-bottom: 1rem;
-  width: 15rem;
-  height: 15rem;
   border-radius: 3px;
-}
-
-.calendar__day:hover {
+  transition: all .2s;
+  backface-visibility: hidden;
   cursor: pointer;
 }
 
-.calendar__day:not(:last-child) {
-  margin-right: 1rem;
+.calendar__day:hover {
+  transform: translateY(-2px)
 }
 
 .calendar__side {
   position: absolute;
   top: 0;
   left: 0;
-  width: 15rem;
-  height: 15rem;
+  width: 100%;
+  height: 100%;
   border-radius: 3px;
   transition: all 1s ease;
   -webkit-backface-visibility: hidden;
@@ -64,59 +73,84 @@ body {
 
 .calendar__side--front {
   padding: 1rem;
-  background: #a9a9a9;
+  background: url('../icon-task-3.svg'),rgba(255,255,255,.7);
+  background-size: 15%;
+  background-repeat: no-repeat;
+  background-position: 96% 4%;
+}
+
+.calendar__side--back {
+  text-align: center;
+  transform: rotateY(180deg);
+  background:rgba(255,255,255,.7);
 }
 
 .calendar__date {
   display: block;
-  text-align: center;
-  font-family: 'Amatic SC', cursive, sans-serif;
-  font-size: 1.7rem;
-  border: 1px solid #fff;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 50%;
+  text-align: center;
+  font-family: var(--font-secondary); 
+  font-size: 1.7rem;
 }
 
-.calendar__side--back {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: rotateY(180deg);
-  background: url('../pen.svg'),url('../hand-writing.svg'),url('../drawing-line.svg'), #a9a9a9;
-  background-size: 30%,30%,30% ,cover;
-  background-repeat: no-repeat;
-  background-position: 50% 90%, 0% 6%, 100% 5% , center;
+.calendar__task-list {
+  padding: 1rem;
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  color: var(--color-primary);
 }
 
-.calendar__day:hover .calendar__side--front {
-  transform: rotateY(-180deg);
+.calendar__item {
+  margin-top: 1rem;
+  color: #cdcdcdb9;
+  font-size: 1.5rem;
+  font-family: 'Lobster', cursive, sans-serif;
 }
 
-.calendar__day:hover .calendar__side--back {
-  transform: rotateY(0);
+.btn__add {
+  visibility: hidden;
+  margin: 2.5rem auto 1rem auto;
+  opacity: 0;
+  background: darkkhaki;
 }
 
-.active {
-  background-color: #00FF7F;
+.btn__watch {
+  visibility: hidden;
+  margin: 0 auto;
+  opacity: 0;
+  background: darkkhaki;
 }
 
-.calendar__btn{
-  margin-top: 5.5rem;
+.calendar__side--front:hover > .btn__add,
+.calendar__side--front:hover > .btn__watch {
+  visibility: visible;
+  opacity: 1;
+} 
+
+
+.calendar__descr {
+  margin-top: 1rem;
+  font-family: var(--font-secondary);
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  text-align: center;
 }
+
 
 .btn {
+  display: block;
   padding: .5rem 1.5rem .7rem 1.5rem;
   border: none;
   border-radius: 100rem;
-  font-family: 'Amatic SC', cursive, sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.7rem;
   transition: all .2s;
 }
 
 .btn:hover {
   cursor: pointer;
-  background: #696969;
+  background: var(--color-primary);
   color: #fff;
   transition: all .2s;
 }
@@ -131,19 +165,16 @@ body {
 }
 
 
-
-
-
-
+/* МОДАЛЬНОЕ ОКНО */
 .modal {
   display: none;
   position: absolute;
   width: 150rem;
+  max-width: 50rem;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   padding: 2rem;
-  max-width: 50rem;
+  transform: translate(-50%, -50%);
   border-radius: 3px;
   background: lightgrey; 
   box-shadow: 0 2rem 4rem rgba(0,0,0,0.5);
@@ -153,20 +184,24 @@ body {
   display: block;
   margin: 2rem 0;
   text-align: center;
+  font-family: var(--font-primary);
   font-size: 3rem;
-  font-family: 'Amatic SC', cursive, sans-serif;
 }
 
 .form__group {
   border: none;
 }
 
+.form__group:first-of-type {
+  margin-bottom: 1.5rem;
+}
+
 .form__task {
   display: block;
+  padding: 1.5rem 2rem;
   width: 100%;
   font-size: 1.5rem;
   font-family: 'Times', sans-serif;
-  padding: 1.5rem 2rem;
   border-radius: 3px;
   border: none;
   border-bottom: 3px solid #fff;
@@ -179,7 +214,6 @@ body {
 }
 
 .form__task:focus {
-  outline: none;
   box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
   border-bottom: 3px solid #55c57a;
 }
@@ -187,7 +221,7 @@ body {
 .form__label {
   display: block;
   margin: .7rem 0 0 2rem;
-  font-family: 'Amatic SC', cursive, sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.7rem;
   font-weight: 600;
   transition: all .3s;
@@ -200,9 +234,8 @@ body {
   transform: translate(10rem);
 }
 
-
 .modal__btn {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   padding: 1rem 5rem;
   font-size: 2rem;
   box-shadow: 0 1rem 1rem rgba(0,0,0,0.1);
@@ -212,14 +245,4 @@ body {
   position: absolute;
   top: 1rem;
   right: 1rem;
-}
-
-.calendar__task {
-  padding: 1rem;
-  list-style: none;
-}
-
-.calendar__item {
-  font-size: 1.8rem;
-  font-family: 'Amatic SC', cursive, sans-serif;
 }

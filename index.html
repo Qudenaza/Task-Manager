@@ -15,21 +15,23 @@
     <div class="calendar__day">
       <div class="calendar__side calendar__side--front">
         <span class="calendar__date">1</span>
-        <ul class="calendar__task"></ul>
+        <p class="calendar__descr"></p>
+        <button class="btn btn__add">Добавить событие</button>
+        <button class="btn btn__watch">Посмотреть список дел</button>
       </div>  
       <div class="calendar__side calendar__side--back">
-        <button class="btn calendar__btn">Добавить событие</button>
+        <ol class="calendar__task-list">Cписок дел:</ol>
       </div>
     </div>
     <div class="calendar__day">
       <div class="calendar__side calendar__side--front">
         <span class="calendar__date">2</span>
-        <ul class="calendar__task">
-          <li class="calendar__item">Выгулять собаку</li>
-        </ul>
+        <p class="calendar__descr"></p>
+        <button class="btn btn__add">Добавить событие</button>
+        <button class="btn btn__watch">Посмотреть список дел</button>
       </div>  
       <div class="calendar__side calendar__side--back">
-        <button class="btn calendar__btn">Добавить событие</button>
+        <ol class="calendar__task-list">Cписок дел:</ol>
       </div>
     </div>
     <div class="calendar__day">
@@ -95,8 +97,12 @@
     <form action="#" class="form">
       <h2 class="form__title">Добавление события</h2>
       <fieldset class="form__group">
-        <input type="text" name="text" class="form__task" required id="inputTask" placeholder="Добавьте событие">
+        <input type="text" name="text" class="form__task" required id="inputTask" placeholder="Что нужно сделать?">
         <label for="inputTask" class="form__label">Добавьте событие</label>
+      </fieldset>
+      <fieldset class="form__group">
+        <input type="text" name="time" class="form__task" required id="inputTime" placeholder="Во сколько? Например: 16:00" disabled>
+        <label for="inputDate" class="form__label">Добавьте время</label>
       </fieldset>
       <button class="btn modal__btn">Добавить</button>
     </form>
