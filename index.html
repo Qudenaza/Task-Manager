@@ -20,7 +20,15 @@
         <button class="btn btn__watch">Посмотреть список дел</button>
       </div>  
       <div class="calendar__side calendar__side--back">
-        <ol class="calendar__task-list">Cписок дел:</ol>
+        <span class="calendar__task--title">Список дел:</span>
+        <button class="calendar__back-btn" title="Назад"></button>
+        <ul class="calendar__task-list">
+          <li class="calendar__item">Выгулять собаку 
+            <button class="edit__btn" title="Редактировать"></button>
+            <button class="delete__btn" title="Удалить"></button>
+          </li>
+        </ul>
+        <button class="calendar__clear-all-btn btn">Очистить список</button>
       </div>
     </div>
     <div class="calendar__day">
@@ -31,7 +39,9 @@
         <button class="btn btn__watch">Посмотреть список дел</button>
       </div>  
       <div class="calendar__side calendar__side--back">
-        <ol class="calendar__task-list">Cписок дел:</ol>
+        <span class="calendar__task--title">Список дел:</span>
+        <button class="calendar__back-btn" title="Назад"></button>
+        <ol class="calendar__task-list"></ol>
       </div>
     </div>
     <div class="calendar__day">
@@ -85,7 +95,17 @@
     <div class="calendar__day">23</div>
     <div class="calendar__day">24</div>
     <div class="calendar__day">25</div>
-    <div class="calendar__day">26</div>
+    <div class="calendar__day">
+      <div class="calendar__side calendar__side--front">
+        <span class="calendar__date">26</span>
+        <p class="calendar__descr"></p>
+        <button class="btn btn__add">Добавить событие</button>
+        <button class="btn btn__watch">Посмотреть список дел</button>
+      </div>  
+      <div class="calendar__side calendar__side--back">
+        <ol class="calendar__task-list">Cписок дел:</ol>
+      </div>
+    </div>
     <div class="calendar__day">27</div>
     <div class="calendar__day">28</div>
     <div class="calendar__day">29</div>
@@ -107,6 +127,13 @@
       <button class="btn modal__btn">Добавить</button>
     </form>
   </div>
+  <!-- <div class="edit">
+    <button class="edit__close-btn">X</button>
+    <h3 class="edit__title">Редактировать</h3>
+    <input type="text" class="edit__field form__task" id="editField" placeholder="Редактирование текста">
+    <label for="editField" class="form__label">Редактирование текста</label>
+    <button class="btn save__btn">Cохранить</button>
+  </div> -->
   <script src="js/app.js"></script>
 </body>
 </html>
