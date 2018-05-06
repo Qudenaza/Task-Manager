@@ -72,11 +72,11 @@ body {
 }
 
 .calendar__side--front {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 1rem;
-  background: url('../icon-task-3.svg'),rgba(255,255,255,.7);
-  background-size: 15%;
-  background-repeat: no-repeat;
-  background-position: 96% 4%;
+  background: rgba(255,255,255,.7);
 }
 
 .calendar__side--back {
@@ -110,42 +110,50 @@ body {
 }
 
 .calendar__item {
-  display: flex;
+  /* display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center; */ 
+  width: 90%;
+  position: relative;
   margin: 1rem 0 0 2rem;
-  color: #cdcdcdb9;
+  list-style-type: decimal;
+  color: var(--color-primary);
   font-size: 1.5rem;
   font-family: 'Lobster', cursive, sans-serif;
 }
 
-.calendar__item:hover .edit__btn,
-.calendar__item:hover .delete__btn {
-  display: block;
-}
-
 .edit__btn {
-  display: none;
-  margin-left: auto;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  /*flex: 0 0 1.5rem;
+  margin-left: auto;*/
   width: 1.5rem;
   height: 1.5rem;
+  transform: translateY(-50%);
   background: url('../draw.svg');
+  background-repeat: no-repeat;
   border: none;
+}
+
+.delete__btn {
+  position: absolute;
+  /*flex: 0 0 1.5rem;
+  margin-left: 1rem; */
+  top: 50%;
+  right: -2.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: translateY(-50%);
+  border: none;
+  background: url('../clear-button.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .edit__btn:hover,
 .delete__btn:hover {
   cursor: pointer;
-}
-
-.delete__btn {
-  display: none;
-  margin-left: .5rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: none;
-  background: url('../clear-button.svg');
-  background-size: 100%;
 }
 
 .btn__add {
@@ -157,6 +165,7 @@ body {
 
 .btn__watch {
   visibility: hidden;
+  width: 50%;
   margin: 0 auto;
   opacity: 0;
   background: darkkhaki;
@@ -177,7 +186,8 @@ body {
 
 .calendar__clear-all-btn {
   position: absolute;
-  left: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 1rem;
   background: darkkhaki;
 }
@@ -242,7 +252,7 @@ body {
 
 .form__title {
   display: block;
-  margin: 2rem 0;
+  margin: 0 0 1.5rem 0;
   text-align: center;
   font-family: var(--font-primary);
   font-size: 3rem;
@@ -303,38 +313,125 @@ body {
 
 .close__btn {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 2.5rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  transition: all .2s;
+  backface-visibility: hidden;
 }
 
-.edit {
-  display: none;
-  padding: 2rem;
+.close__btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.close__btn::before,
+.close__btn::after {
+  content: '';
   position: absolute;
-  width: 50rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-primary);
+}
+
+.close__btn::before {
+  transform: rotate(45deg);
+}
+
+.close__btn::after {
+  transform: rotate(-45deg);
+}
+
+
+
+/* ТЕСТИРОВАНИЕ НОВОГО ФУНКЦИОНАЛА */
+
+.fullscreen {
+  display: none; 
+  position: absolute;
+  padding: 1rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 50rem;
+  height: 50rem;
+  background: #fff; 
+  box-shadow: 0 2rem 4rem rgba(0,0,0,0.5);
   border-radius: 3px;
-  background: lightgray;
 }
 
-.edit__title {
+.fullscreen__title {
   display: block;
-  margin-bottom: 2rem;
-  color: var(--color-primary);
-  text-align: center;
+  margin: 1rem 0 2rem 0;
   font-family: var(--font-secondary);
-  font-size: 2.5rem;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 3rem;
+  text-align: center;
 }
 
-.edit__field {
-  width: 90%;
-  margin: 0 auto;
+.fullscreen__close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  transition: all .2s;
+  backface-visibility: hidden;
 }
 
-.save__btn {
-  margin-left: 2rem;
-  font-family: var(--font-primary);
+.fullscreen__close:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
+
+.fullscreen__close::before,
+.fullscreen__close::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-primary);
+}
+
+.fullscreen__close::before {
+  transform: rotate(45deg);
+}
+
+.fullscreen__close::after {
+  transform: rotate(-45deg);
+}
+
+.fullscreen__btn {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  cursor: pointer;
+}
+
+.fullscreen__btn svg {
+  width: 100%;
+  height: 100%;
+}
+
+.fullscreen__btn:hover svg{
+  fill: darkkhaki;
+}
+
+.fullscreen__btn:focus {
+  outline: none;
+  border: none;
+}
+
+@media (max-width: 500px) {
+  .fullscreen {
+    width: 100vw;
+    padding: 0;
+  }
+};
