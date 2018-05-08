@@ -66,7 +66,7 @@ function clearTasks(e) {
     countTasks();
   };
 };
-////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 // Функциия удаляет задачу с задней стороны карты и из локального хранилища
 function removeTask(e) {
@@ -102,10 +102,14 @@ function removeTaskFromLocalStorage(taskItem) {
 function countTasks() {
   let month = document.querySelectorAll('.calendar__day');
 
-  for(let i = 1; i <= 2; i++) {
+  for(let i = 1; i <= month.length; i++) {
     let numberOfTasks = JSON.parse(localStorage.getItem(i)) ? (JSON.parse(localStorage.getItem(i))).length : 0;
     
-    month[i - 1].firstElementChild.children[2].textContent = `У вас на этот день запланировано ${numberOfTasks} дел(-а)`;
+    if(!numberOfTasks) {
+      month[i - 1].firstElementChild.children[2].textContent = `У вас на этот день запланировано ${numberOfTasks} дел(-а)`;
+    } else {
+    month[i - 1].firstElementChild.children[2].innerHTML = `У вас на этот день запланировано <span class="task-counter">${numberOfTasks}</span> дел(-а)`;
+    };
   };  
 };
 
@@ -141,15 +145,16 @@ function closeFullScreen(e) {
 
     calendar.addEventListener('click', fullScreenOpen);
   
-    while(fullScreen.lastElementChild.firstElementChild) {
-      fullScreen.lastElementChild.firstElementChild.remove();
+    while(fullScreen.children[2].firstElementChild) {
+      fullScreen.children[2].firstElementChild.remove();
     };
+  
 
     fullScreen.removeEventListener('click', removeTask);
 
     fullScreen.removeEventListener('click', clearTasks);
 
-    fullScreen.removeEventListener('click', editTasks);
+    fullScreen.removeEventListener('click', editTask);
   };  
 };
 
