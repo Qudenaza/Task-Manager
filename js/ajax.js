@@ -7,7 +7,7 @@
   document.addEventListener('DOMContentLoaded', getQuotes); 
 
   function getQuotes() {
-    fetch(`http://api.icndb.com/jokes/random/${output.length}`)
+    fetch(`https://api.icndb.com/jokes/random/${output.length}`)
       .then(res => res.json())
       .then(data => {
         data.value.forEach((joke, i) =>{

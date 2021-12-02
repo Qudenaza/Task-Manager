@@ -104,6 +104,8 @@ body {
 }
 
 .calendar__side--back {
+  display: flex;
+    flex-direction: column;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   background:rgba(255,255,255,.7);
@@ -139,9 +141,6 @@ body {
 }
 
 .calendar__item {
-  /* display: flex;
-  justify-content: flex-start;
-  align-items: center; */ 
   width: 90%;
   position: relative;
   margin: 1rem 0 0 2rem;
@@ -155,8 +154,6 @@ body {
   position: absolute;
   top: 50%;
   right: 0;
-  /*flex: 0 0 1.5rem;
-  margin-left: auto;*/
   width: 1.5rem;
   height: 1.5rem;
   -webkit-transform: translateY(-50%);
@@ -169,8 +166,6 @@ body {
 
 .delete__btn {
   position: absolute;
-  /*flex: 0 0 1.5rem;
-  margin-left: 1rem; */
   top: 50%;
   right: -2.5rem;
   width: 1.5rem;
@@ -205,7 +200,8 @@ body {
 }
 
 .calendar__back-btn {
-  margin-left: 4rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
   width: 1.5rem;
   height: 1.5rem;
   background: url('../go-back-arrow.svg');
@@ -479,6 +475,7 @@ body {
   height: 3rem;
   border: none;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .fullscreen__btn svg {
